@@ -23,6 +23,11 @@ public class BuyStepdefs {
         catalog.addProduct(name, price);
     }
 
+    @Given("a product {string} with price {float} exists and {int} quantity")
+    public void a_product_with_price_and_quantity_exists(String name, double price, int quantity) {
+        catalog.addProduct(name, price, quantity);
+    }
+
     @When("I buy {string} with quantity {int}")
     public void i_buy_with_quantity(String name, int quantity) {
         Product prod = catalog.getProduct(name);
@@ -32,6 +37,16 @@ public class BuyStepdefs {
     @Then("total should be {float}")
     public void total_should_be(double total) {
         assertEquals(total, order.getTotal());
+    }
+
+    @When("I check {string}")
+    public void i_check_products(String name) {
+        Product prod = catalog.getProduct(name);
+    }
+
+    @Then("{string} have {int} quantity")
+    public void product_exists(String name, int quantity) {
+        assertEquals(quantity, catalog.getProduct(name).getQuantity());
     }
 }
 

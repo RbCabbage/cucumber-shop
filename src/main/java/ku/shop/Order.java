@@ -21,8 +21,9 @@ public class Order {
         this.date = LocalDateTime.now();
     }
 
-    public void addItem(Product prod, int quantity) {
-        items.add(new OrderItem(prod, quantity));
+    public void addItem(Product prod, int quantity){
+        if (quantity > 0 && quantity <= prod.getQuantity())
+            items.add(new OrderItem(prod, quantity));
     }
 
     public double getTotal() {

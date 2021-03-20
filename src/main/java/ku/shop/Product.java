@@ -24,8 +24,9 @@ public class Product {
     public void setName(String name) {
         this.name = name;
     }
+
     public void setPrice(double price) {
-        if (price < 0)
+        if (price <= 0)
             throw new IllegalArgumentException("Price must be positive");
         this.price = price;
     }
@@ -34,4 +35,5 @@ public class Product {
             throw new IllegalArgumentException("Quantity must be positive");
         this.quantity = quantity;
     }
+
 }
